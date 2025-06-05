@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Sign up</title>
+    <meta charset="UTF-8">
+    <style>
+        
+body {
+    background-color: #ccc;
+    background-size: cover;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+span {
+    background-color: rgb(210, 250, 249);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    height: 400px;
+}
+h1 {
+    text-align: center;
+}
+form {
+    display: flex;
+    flex-direction: column;
+}
+input {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+button {
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+}
+a {
+    text-align: center;
+    display: block;
+    margin-top: 10px;
+    color: #007BFF;
+    text-decoration: none;
+}
+    </style>
+</head>
+<body>
+    <span>
+        <h1>🛍️ Sign up</h1>
+
+        <form action="signup.php" method="post">
+            <input type="text" id="first_name" name="first_name" placeholder="First name" required><br>
+            <input type="text" id="last_name" name="last_name" placeholder="Last name" required><br>
+            <input type="email" id="email" name="email" placeholder="Email" required><br>
+            <input type="password" id="password" name="password" placeholder="Password" required><br>
+            <button type="submit">Sign up</button>
+        </form>
+
+        <a href="login.html">Already have an account?</a>
+    </span>
+</body>
+</html>

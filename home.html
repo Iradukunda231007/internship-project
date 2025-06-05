@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🛍️XOXO Outfits</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+    }
+
+    header {
+      background-color: #e1ccd6;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .navbar {
+      background-color: #58268a;
+      overflow: hidden;
+    }
+
+    .navbar a {
+      float: left;
+      display: block;
+      color: #e3d3e6;
+      text-align: center;
+      padding: 14px 20px;
+      text-decoration: none;
+    }
+
+    .navbar a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    #featured-cothes {
+      text-align: center;
+      background-color: #333;
+    }
+
+    .clothes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .clothe-card {
+      border: 1px solid #ddd;
+      padding: 10px;
+      border-radius: 8px;
+      background-color: #fff;
+    }
+
+    .clothe-card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+
+    .clothe-card button {
+      margin-top: 10px;
+      padding: 10px;
+      background-color: #333;
+      color: rgb(188, 171, 187);
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .clothe-card button:hover {
+      background-color: #555;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🛍️XOXO Outfits</h1>
+  </header>
+
+  <div class="navbar">
+  <input type="text" class="search-input" placeholder="Search for outfits...">
+  <i class="fas fa-search search-icon"></i>
+    <a href="#home">Home</a>
+    <a href="login.html">Login</a>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+    <a href="#" onclick="openCart()">🛒 Cart (<span id="cart-count">0</span>)</a>
+
+  </div>
+
+  
+
+  <p id="formResponse" style="margin-top: 15px; color: green; display: none;"></p>
+</section>
+
+    <section id="featured-clothes">
+      <h2>Featured Clothes</h2>
+      <div class="clothes-grid">
+
+        <div class="clothe-card">
+          <img src="https://i.pinimg.com/736x/ae/5b/3d/ae5b3db6b6187acd7d6f02ebe9f6def6.jpg" alt="Clops">
+          <h3>Clops</h3>
+          <p>Size: Small & Large</p>
+          <p>Color: All</p>
+          <button onclick="addToCart('Clops')">Add to cart</button>
+        </div>
+
+        <div class="clothe-card">
+          
+        <img src="https://i.pinimg.com/736x/bc/bb/dd/bcbbdd7f609fe446388dfe058d6ecf90.jpg">
+          <h3>shorts</h3>
+          <p>Size: All</p>
+          <p>Color: Brown & Black</p>
+          <button onclick="addToCart('shorts')">Add to cart</button>
+        </div>
+
+        <div class="clothe-card">
+          <img src="https://i.pinimg.com/736x/95/f9/ea/95f9ea085b5dc8735bfe93909f29e659.jpg">
+          <h3>Casual Jacket</h3>
+          <p>Size: M, L, XL</p>
+          <p>Color: Navy</p>
+          <button onclick="addToCart('casual jacket')">Add to cart</button>
+        </div>
+
+        <div class="clothe-card">
+          <img src="https://i.pinimg.com/736x/f8/5f/89/f85f89be867d4379e8c77cbb764ad00c.jpg">
+          <h3>Summer Dress</h3>
+          <p>Size: S, M</p>
+          <p>Color: Yellow, Floral</p>
+          <button onclick="addToCart('summer dress')">Add to cart</button>
+        </div>
+
+        <div class="clothe-card">
+          <img src=https://i.pinimg.com/736x/87/c6/40/87c64007deea909ba2cf85d63b5fcf1b.jpg
+          <h3>Mini Skirt</h3>
+          <p>Size: S, M, L</p>
+          <p>Color: Black</p>
+          <button onclick="addToCart('mini skirt')">Add to cart</button>
+        </div>
+
+      </div>
+      <button onclick="clearCart()">Clear Cart</button>
+    </section>
+    <section id="services" style="margin-top: 50px;">
+  <h2>Our Services</h2>
+  <ul>
+    <li onclick="showService('Free shipping on all orders over $50 across the country.')">✨ Free shipping</li>
+    <li onclick="showService('Book a 1-on-1 video call with our stylist to get personalized outfit suggestions.')">🧵 Personal styling</li>
+    <li onclick="showService('Easy 14-day returns with full refunds or exchanges.')">🔄 14-day return policy</li>
+    <li onclick="showService('Order before 2 PM and we’ll dispatch your items the same day!')">📦 Same-day dispatch</li>
+  </ul>
+</section>
+
+<!-- Modal for Service Detail -->
+<div id="serviceModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6);">
+  <div style="background:#5b2768; margin:10% auto; padding:20px; width:80%; max-width:400px; border-radius:8px; text-align:center;">
+    <p id="serviceText"></p>
+    <button onclick="closeModal()">Close</button>
+  </div>
+</div>
+<section id="about" style="margin-top: 50px;">
+  <h2>About Us</h2>
+  <p id="about-summary">
+    XOXO Outfits is your go-to online boutique for trendy and affordable fashion.
+    <span id="dots">...</span>
+    <span id="more-text" style="display:none;">
+      Our mission is to empower every person to feel confident and stylish. We offer carefully curated outfits,
+      premium customer service, and a commitment to sustainability and ethical sourcing. Join us in redefining fashion.
+    </span>
+  </p>
+  <button onclick="toggleAbout()" id="readMoreBtn">Read more</button>
+  <main>
+    
+    </button>
+  </form>
+</section>
+<script>
+  function toggleAbout() {
+    var dots = document.getElementById("dots");
+    var moreText = document.getElementById("more-text");
+    var btnText = document.getElementById("readMoreBtn");
+
+    if (dots.style.display === "none") {
+      dots.style.display = "inline";
+      moreText.style.display = "none";
+      btnText.textContent = "Read more";
+    } else {
+      dots.style.display = "none";
+      moreText.style.display = "inline";
+      btnText.textContent = "Read less";
+    }
+  }
+
+  function showService(text) {
+    document.getElementById("serviceText").textContent = text;
+    document.getElementById("serviceModal").style.display = "block";
+  }
+
+  function closeModal() {
+    document.getElementById("serviceModal").style.display = "none";
+  }
+  function clearCart() {
+  cart = [];
+  localStorage.removeItem('cart');
+  updateCartCount();
+  openCart();
+}
+
+</script>
+
+  <!-- Cart Popup -->
+<div id="cart-popup" style="display:none; position:fixed; top:70px; right:20px; width:300px; background:#fff; border:1px solid #ddd; box-shadow:0 0 10px rgba(0,0,0,0.2); padding:15px; z-index:1000; border-radius:8px;">
+  <h3>Your Cart</h3>
+  <ul id="cart-items" style="list-style:none; padding:0;"></ul>
+  <button onclick="closeCart()">Close</button>
+</div>
+<script>
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  function addToCart(itemName) {
+    cart.push(itemName);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartCount();
+    alert(itemName + " added to cart!");
+  }
+
+  function updateCartCount() {
+    document.getElementById("cart-count").textContent = cart.length;
+  }
+
+  function openCart() {
+    const cartList = document.getElementById("cart-items");
+    cartList.innerHTML = "";
+
+    if (cart.length === 0) {
+      cartList.innerHTML = "<li>Your cart is empty.</li>";
+    } else {
+      cart.forEach((item, index) => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        cartList.appendChild(li);
+      });
+    }
+
+    document.getElementById("cart-popup").style.display = "block";
+  }
+
+  function closeCart() {
+    document.getElementById("cart-popup").style.display = "none";
+  }
+
+  // Load cart count on page load
+  updateCartCount();
+</script>
+
+<script>
+  const form = document.getElementById('contactForm');
+  const response = document.getElementById('formResponse');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    // Grab the form data
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const message = form.message.value.trim();
+
+    // Here you could send data to backend with fetch(), for now just show a thank you
+    if (name && email && message) {
+      response.textContent = `Thank you, ${name}! Your message has been received.`;
+      response.style.display = 'block';
+
+      // Reset form fields
+      form.reset();
+    } else {
+      response.textContent = 'Please fill in all fields.';
+      response.style.color = 'red';
+      response.style.display = 'block';
+    }
+  });
+</script>
+<script>
+  const form = document.getElementById('contactForm');
+  const response = document.getElementById('formResponse');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const message = form.message.value.trim();
+
+    if (name && email && message) {
+      response.textContent = `Thank you, ${name}! Your message has been received.`;
+      response.style.color = 'green';
+      response.style.display = 'block';
+      form.reset();
+    } else {
+      response.textContent = 'Please fill in all fields.';
+      response.style.color = 'red';
+      response.style.display = 'block';
+    }
+  });
+</script>
+
+</body>
+</html>
+
